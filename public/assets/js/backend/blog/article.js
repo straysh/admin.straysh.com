@@ -61,7 +61,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                     url = url.substring(7);
                     url = url.split('/')[0];
                     url = url.replace('admin.', 'www.');
-                    return `<a href="http://${url}/article/${value}" target="_blank" class="btn btn-default btn-sm" style="text-decoration: underline">${value}</a>`;
+                    return `<a href="//${url}/article/${value}" target="_blank" class="btn btn-default btn-sm" style="text-decoration: underline">${value}</a>`;
                 }
             },
         }

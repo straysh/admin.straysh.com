@@ -25,7 +25,7 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                 columns: [
                     [
                         // {checkbox: true},
-                        {field: 'id', title: __('Id')},
+                        {field: 'id', title: __('Id'), formatter: Controller.api.formatter.aLink2Article},
                         {field: 'type', title: __('Type')},
                         {field: 'user_id', title: __('User_id')},
                         {field: 'category_id', title: __('Category_id')},
@@ -33,10 +33,10 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
                         {field: 'title', title: __('Title')},
                         {field: 'slug', title: __('Slug')},
                         {field: 'hits', title: __('Hits')},
-                        {field: 'published_at', title: __('Published_at')},
-                        {field: 'created_at', title: __('Created_at')},
-                        {field: 'updated_at', title: __('Updated_at')},
-                        {field: 'deleted_at', title: __('Deleted_at')},
+                        {field: 'published_at', title: __('Published_at'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
+                        {field: 'created_at', title: __('Created_at'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
+                        {field: 'updated_at', title: __('Updated_at'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
+                        {field: 'deleted_at', title: __('Deleted_at'), operate:'RANGE', addclass:'datetimerange', formatter: Table.api.formatter.datetime},
                         {field: 'operate', title: __('Operate'), table: table, events: Table.api.events.operate, formatter: Table.api.formatter.operate}
                     ]
                 ]
@@ -54,7 +54,16 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
         api: {
             bindevent: function () {
                 Form.api.bindevent($("form[role=form]"));
-            }
+            },
+            formatter: {
+                aLink2Article: function(value, row, index){
+                    let url = window.location.href;
+                    url = url.substring(7);
+                    url = url.split('/')[0];
+                    url = url.replace('admin.', 'www.');
+                    return `<a href="http://${url}/article/${value}" target="_blank" class="btn btn-default btn-sm" style="text-decoration: underline">${value}</a>`;
+                }
+            },
         }
     };
     return Controller;

@@ -1,7 +1,7 @@
 <?php
 
 return array (
-  'name' => '蔷薇出行后台管理系统',
+  'name' => 'Straysh的小院台管理系统',
   'beian' => '',
   'cdnurl' => '',
   'version' => '1.0.2',
@@ -12,7 +12,7 @@ return array (
     'backend' => 'zh-cn',
     'frontend' => 'zh-cn',
   ),
-  'fixedpage' => 'dashboard',
+  'fixedpage' => 'blog/article',
   'categorytype' => 
   array (
     'default' => 'Default',

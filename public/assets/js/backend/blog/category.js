@@ -1,39 +1,36 @@
 define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefined, Backend, Table, Form) {
 
-    let Controller = {
+    var Controller = {
         index: function () {
             // 初始化表格参数配置
             Table.api.init({
                 extend: {
-                    index_url: 'blog/article/index' + location.search,
-                    add_url: 'blog/article/add',
-                    edit_url: 'blog/article/edit',
-                    del_url: 'blog/article/del',
-                    // multi_url: 'blog/article/multi',
-                    table: 'article',
+                    index_url: 'blog/category/index' + location.search,
+                    add_url: 'blog/category/add',
+                    edit_url: 'blog/category/edit',
+                    del_url: 'blog/category/del',
+                    multi_url: 'blog/category/multi',
+                    table: 'category',
                 }
             });
 
-            let table = $("#table");
+            var table = $("#table");
 
             // 初始化表格
             table.bootstrapTable({
                 url: $.fn.bootstrapTable.defaults.extend.index_url,
                 pk: 'id',
                 sortName: 'id',
-                pageSize: 20,
                 columns: [
                     [
-                        // {checkbox: true},
+                        {checkbox: true},
                         {field: 'id', title: __('Id')},
-                        {field: 'type', title: __('Type')},
-                        {field: 'user_id', title: __('User_id')},
-                        {field: 'category_id', title: __('Category_id')},
-                        {field: 'author', title: __('Author')},
-                        {field: 'title', title: __('Title')},
+                        {field: 'pid', title: __('Pid')},
+                        {field: 'name', title: __('Name')},
+                        {field: 'name_zh', title: __('Name_zh')},
                         {field: 'slug', title: __('Slug')},
-                        {field: 'hits', title: __('Hits')},
-                        {field: 'published_at', title: __('Published_at')},
+                        {field: 'article_amount', title: __('Article_amount')},
+                        {field: 'order', title: __('Order')},
                         {field: 'created_at', title: __('Created_at')},
                         {field: 'updated_at', title: __('Updated_at')},
                         {field: 'deleted_at', title: __('Deleted_at')},

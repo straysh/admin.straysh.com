@@ -294,8 +294,8 @@ class Crud extends Command
         $this->reservedField = array_merge($this->reservedField, [$this->createTimeField, $this->updateTimeField, $this->deleteTimeField]);
 
         $dbconnect = Db::connect($db);
-        $dbname = Config::get($db . '.database');
-        $prefix = Config::get($db . '.prefix');
+        $dbname = Config::get($db)['database'];
+        $prefix = Config::get($db)['prefix'];
 
         //模块
         $moduleName = 'admin';

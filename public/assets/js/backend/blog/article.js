@@ -58,7 +58,8 @@ define(['jquery', 'bootstrap', 'backend', 'table', 'form'], function ($, undefin
             formatter: {
                 aLink2Article: function(value, row, index){
                     let url = window.location.href;
-                    url = url.substring(7);
+                    let isHttps = url.startsWith('https');
+                    url = url.substring(isHttps ? 8 : 7);
                     url = url.split('/')[0];
                     url = url.replace('admin.', 'www.');
                     return `<a href="//${url}/article/${value}" target="_blank" class="btn btn-default btn-sm" style="text-decoration: underline">${value}</a>`;
